@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux';
-import test from './test';
-let reducers = combineReducers({test});
+import file from './file';
+let reducers = combineReducers({file});
 export default reducers;

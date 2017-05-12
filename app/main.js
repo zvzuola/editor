@@ -6,6 +6,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const FileMenu = require('./server/menu/file.js')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -32,6 +33,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  electron.Menu.setApplicationMenu( electron.Menu.buildFromTemplate(FileMenu));
+  mainWindow.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished

@@ -4,11 +4,17 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import reducers from '../reducers';
-import Test from './test';
+import FileText from './file';
 import Test2 from './test2';
 
+import * as actions from '../actions/file'
+import { ipcRenderer } from 'electron'
 
 let store = createStore(reducers);
+
+ipcRenderer.on('file-opened', (e, {file, fileName, filePath}) => {
+    store.dispatch(actions.fileOpened(file, fileName, filePath))
+})
 
 class App extends Component {
     render() {
@@ -28,7 +34,7 @@ ReactDOM.render(
                     <li><Link to="/">test</Link></li>
                     <li><Link to="/test2">Zillow Group</Link></li>
                 </ul>
-                <Route path="/" component={Test} />
+                <Route path="/" component={FileText} />
                 <Route path="/test2" component={Test2} />
             </div>
         </Router>
