@@ -5,7 +5,6 @@ import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import reducers from '../reducers';
 import FileText from './file';
-import Test2 from './test2';
 
 import * as actions from '../actions/file'
 import { ipcRenderer } from 'electron'
@@ -30,12 +29,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <div>
-                <ul>
-                    <li><Link to="/">test</Link></li>
-                    <li><Link to="/test2">Zillow Group</Link></li>
-                </ul>
                 <Route path="/" component={FileText} />
-                <Route path="/test2" component={Test2} />
             </div>
         </Router>
     </Provider>,

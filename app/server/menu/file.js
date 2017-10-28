@@ -9,6 +9,7 @@ module.exports = [{
         accelerator: 'CmdOrCtrl+O',
         click: (menuItem, browserWindow) => {
             dialog.showOpenDialog({ properties: ['openFile'] }, (filePaths) => {
+                if (!filePaths) return;
                 let filePath = filePaths[0]
                 fs.readFile(filePath, 'utf-8', (err, file) => {
                     browserWindow.webContents.send('file-opened', {
