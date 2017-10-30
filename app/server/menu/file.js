@@ -20,5 +20,11 @@ module.exports = [{
                 })
             })
         }
+    }, {
+        label: 'Save...',
+        accelerator: 'CmdOrCtrl+S',
+        click: (menuItem, browserWindow) => {
+            browserWindow.webContents.send('file-save')
+        }
     }]
 }]

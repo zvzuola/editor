@@ -5,7 +5,11 @@ export default function test(state = { file: '', fileName: '', filePath: '' }, a
                 file: action.file,
                 fileName: action.fileName,
                 filePath: action.filePath
-            })
+            });
+        case 'FILE_CHANGED':
+            return Object.assign({}, state, {
+                file: action.file
+            });
         default:
             return state;
     }

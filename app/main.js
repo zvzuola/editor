@@ -8,6 +8,15 @@ const path = require('path')
 const url = require('url')
 const FileMenu = require('./server/menu/file.js')
 
+const fs = require('fs');
+const ipcMain = electron.ipcMain;
+
+ipcMain.on('file-save', (e, { file, filePath }) => {
+  fs.writeFile(filePath, file, 'utf-8', (err, file) => {
+    if (err) console.log(err);
+  })
+});
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow

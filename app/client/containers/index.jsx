@@ -11,9 +11,14 @@ import { ipcRenderer } from 'electron'
 
 let store = createStore(reducers);
 
-ipcRenderer.on('file-opened', (e, {file, fileName, filePath}) => {
+ipcRenderer.on('file-opened', (e, { file, fileName, filePath }) => {
     store.dispatch(actions.fileOpened(file, fileName, filePath))
-})
+});
+
+ipcRenderer.on('file-save', (e) => {
+    ipcRenderer.send('file-save', { filePath: store.getState().file.filePath, file: store.getState().file.file })
+    // store.dispatch(actions.fileOpened(file, fileName, filePath))
+});
 
 class App extends Component {
     render() {

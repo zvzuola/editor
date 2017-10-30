@@ -10,12 +10,13 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'babel-loader', query: {
+                    loader: 'babel-loader',
+                    query: {
                         presets: ['es2015', 'react']
                     }
                 }],
@@ -23,5 +24,6 @@ module.exports = {
             }
         ]
     },
-    target: 'electron-renderer'
+    target: 'electron-renderer',
+    devtool: 'source-map'
 }

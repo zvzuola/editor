@@ -6,3 +6,10 @@ export function fileOpened(file, fileName, filePath) {
         filePath
     }
 }
+
+export function fileChanged(file) {
+    return {
+        type: 'FILE_CHANGED',
+        file
+    }
+}
