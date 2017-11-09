@@ -1,14 +1,18 @@
+var webpack = require('webpack');
 var path = require('path');
-
 module.exports = {
     entry: './app/client/containers/index',
     output: {
         path: path.join(__dirname, './app/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: 'http://localhost:8800/'
     },
     resolve: {
         extensions: ['.js', '.jsx']
     },
+    plugins: [
+        
+    ],
     module: {
         rules: [
             {
@@ -17,7 +21,7 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     query: {
-                        presets: ['es2015', 'react']
+                        presets: ['es2015', 'react', 'stage-0']
                     }
                 }],
 

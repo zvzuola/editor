@@ -11,6 +11,11 @@ const FileMenu = require('./server/menu/file.js')
 const fs = require('fs');
 const ipcMain = electron.ipcMain;
 
+// console.log(process.env.NODE_ENV);
+// if(process.env.NODE_ENV === 'development') {
+  require('../dev_server');
+// }
+
 ipcMain.on('file-save', (e, { file, filePath }) => {
   fs.writeFile(filePath, file, 'utf-8', (err, file) => {
     if (err) console.log(err);
@@ -22,6 +27,9 @@ ipcMain.on('file-save', (e, { file, filePath }) => {
 let mainWindow
 
 function createWindow () {
+  BrowserWindow.addDevToolsExtension(path.join(
+    app.getPath('appData'), 
+    '/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.5.2_0'))
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 

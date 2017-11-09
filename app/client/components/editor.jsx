@@ -16,7 +16,7 @@ class Editor extends Component {
         this.editor.setTheme('ace/theme/github');
         this.editor.setFontSize(14);
         this.editor.on('change', this.onChange.bind(this));
-        this.editor.setValue(this.props.file, -1);
+        this.editor.setValue(this.props.fileContent, -1);
         this.editor.setOption('maxLines', 99999);
         this.editor.setOption('minLines', 50);
         this.editor.setOption('highlightActiveLine', true);
@@ -25,8 +25,8 @@ class Editor extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.editor.getValue() !== nextProps.file) {
-            this.editor.setValue(nextProps.file, -1);
+        if (this.editor.getValue() !== nextProps.fileContent) {
+            this.editor.setValue(nextProps.fileContent, -1);
         }
     }
 
@@ -46,7 +46,7 @@ class Editor extends Component {
 }
 
 Editor.propTypes = {
-    file: PropTypes.string.isRequired
+    fileContent: PropTypes.string.isRequired
 };
 
 export default Editor;

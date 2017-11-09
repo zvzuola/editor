@@ -1,15 +1,22 @@
-export function fileOpened(file, fileName, filePath) {
+export function fileOpened(fileContent, fileName, filePath) {
     return {
         type: 'FILE_OPENED',
-        file,
+        fileContent,
         fileName,
         filePath
     }
 }
 
-export function fileChanged(file) {
+export function fileChanged(fileContent) {
     return {
         type: 'FILE_CHANGED',
-        file
+        fileContent
+    }
+}
+
+export function fileClick(id) {
+    return {
+        type: 'FILE_CLICK',
+        id
     }
 }
