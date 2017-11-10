@@ -14,11 +14,20 @@ class File extends Component {
         this.props.dispatch(actions.fileClick(file.id));
     }
 
+    onFileClose = (file) => {
+        this.props.dispatch(actions.fileClose(file.id));
+    }
+
     render() {
         const { files, currentFileId } = this.props;
         return (
-            <div>
-                <Head files={files} onFileClick={this.onFileClick} />
+            <div style={{ paddingTop: 30, position: 'relative' }}>
+                <Head
+                    files={files}
+                    currentFileId={currentFileId}
+                    onFileClick={this.onFileClick}
+                    onFileClose={this.onFileClose}
+                />
                 {currentFileId && <Editor
                     fileContent={files[currentFileId].fileContent}
                     onChange={this.onChange.bind(this)}

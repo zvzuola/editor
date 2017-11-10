@@ -20,3 +20,10 @@ export function fileClick(id) {
         id
     }
 }
+
+export function fileClose(id) {
+    return {
+        type: 'FILE_CLOSE',
+        id
+    }
+}

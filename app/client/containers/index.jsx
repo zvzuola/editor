@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import 'antd/dist/antd.css';
 import reducers from '../reducers';
 import FileText from './file';
 
@@ -16,8 +17,8 @@ ipcRenderer.on('file-opened', (e, { file, fileName, filePath }) => {
 });
 
 ipcRenderer.on('file-save', (e) => {
-    ipcRenderer.send('file-save', { filePath: store.getState().file.filePath, file: store.getState().file.file })
-    // store.dispatch(actions.fileOpened(file, fileName, filePath))
+    const file = store.getState().file
+    ipcRenderer.send('file-save', file.files[file.currentFileId])
 });
 
 class App extends Component {

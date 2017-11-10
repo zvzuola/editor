@@ -13,11 +13,11 @@ const ipcMain = electron.ipcMain;
 
 // console.log(process.env.NODE_ENV);
 // if(process.env.NODE_ENV === 'development') {
-  require('../dev_server');
+require('../dev_server');
 // }
 
-ipcMain.on('file-save', (e, { file, filePath }) => {
-  fs.writeFile(filePath, file, 'utf-8', (err, file) => {
+ipcMain.on('file-save', (e, file) => {
+  fs.writeFile(file.filePath, file.fileContent, 'utf-8', (err, file) => {
     if (err) console.log(err);
   })
 });
@@ -26,12 +26,12 @@ ipcMain.on('file-save', (e, { file, filePath }) => {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   BrowserWindow.addDevToolsExtension(path.join(
-    app.getPath('appData'), 
+    app.getPath('appData'),
     '/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.5.2_0'))
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -51,7 +51,7 @@ function createWindow () {
     mainWindow = null
   })
 
-  electron.Menu.setApplicationMenu( electron.Menu.buildFromTemplate(FileMenu));
+  electron.Menu.setApplicationMenu(electron.Menu.buildFromTemplate(FileMenu));
   mainWindow.webContents.openDevTools();
 }
 

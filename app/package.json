@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/zvzuola/editor#readme",
   "dependencies": {
+    "antd": "^2.13.9",
     "brace": "^0.10.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -30,6 +31,6 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
-    "electron": "^1.6.6"    
+    "electron": "^1.6.6"
   }
 }

@@ -13,7 +13,7 @@ class Editor extends Component {
         this.editor.$blockScrolling = Infinity;
         this.editor.getSession().setMode('ace/mode/html');
         this.editor.getSession().setUseWrapMode(true);
-        this.editor.setTheme('ace/theme/github');
+        this.editor.setTheme('ace/theme/textmate');
         this.editor.setFontSize(14);
         this.editor.on('change', this.onChange.bind(this));
         this.editor.setValue(this.props.fileContent, -1);
