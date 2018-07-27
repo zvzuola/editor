@@ -1,18 +1,22 @@
 var webpack = require('webpack');
 var path = require('path');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry: ['webpack-dev-server/client?http://localhost:8800/', 'webpack/hot/dev-server', './app/client/containers/index'],
+    entry: ['./app/client/containers/index'],
     output: {
         path: path.join(__dirname, './app/dist'),
         filename: 'bundle.js',
-        publicPath: 'http://localhost:8800/'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-    ],
+    // plugins: [
+    //     new HtmlWebpackPlugin({
+    //         template: './app/index.html'
+    //     })
+    // ],
     module: {
         rules: [
             {
@@ -34,6 +38,5 @@ module.exports = {
             }
         ]
     },
-    target: 'electron-renderer',
-    devtool: 'source-map'
+    target: 'electron-renderer'
 }

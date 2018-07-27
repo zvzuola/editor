@@ -11,9 +11,11 @@ const FileMenu = require('./server/menu/file.js')
 const fs = require('fs');
 const ipcMain = electron.ipcMain;
 
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+
 // console.log(process.env.NODE_ENV);
 // if(process.env.NODE_ENV === 'development') {
-require('../dev_server');
+// const startDevServer = require('../dev_server');
 // }
 
 ipcMain.on('file-save', (e, file) => {
@@ -27,9 +29,12 @@ ipcMain.on('file-save', (e, file) => {
 let mainWindow
 
 function createWindow() {
-  BrowserWindow.addDevToolsExtension(path.join(
-    app.getPath('appData'),
-    '/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.5.2_0'))
+
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log('An error occurred: ', err));
+
+
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
